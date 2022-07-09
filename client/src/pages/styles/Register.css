@@ -1,0 +1,18 @@
+.username {
+    max-width: 690px !important;
+    padding: 20px;
+}
+
+Form {
+    margin-top: 50px;
+
+}
+
+.text-muted {
+    font-size: 16px !important;
+}
+
+.head {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 42px;
+}

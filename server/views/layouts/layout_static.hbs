@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class=" js csstransforms3d csstransitions pointerevents">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enigma</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/demo.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/component.css">
+  <script src="/javascripts/modernizr.custom.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/modify.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/static.css">
+</head>
+
+<body onload="{{func}}">
+  <div class="container">
+
+    <section class="grid3d vertical" id="grid3d">
+
+      <!-- /grid-wrap -->
+      <div class="content show">
+        <span class="loading">
+
+        </span>
+        <div class="dummy_content show">
+          <div class="dummy-img">
+
+            <div id="output" class="screen" style="background-color:#000000;color:#808080;"> </div>
+
+            <div class="keyboard">
+
+              <!-- <div id="output2" class ="screen2" style="background-color:#000000;color:#808080;"> </div> -->
+              <!--  <div class="section-a"> -->
+              <div class="key function space1">
+
+              </div>
+
+              <div id="extra" class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+
+              <div class="key function space2">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <div class="key function space2">
+
+              </div>
+
+              <div class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <div class="key function">
+
+              </div>
+              <!--END FUNCTION KEYS -->
+
+              <div class="key num dual">
+                <br>
+              </div>
+
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key num dual">
+                <br>
+              </div>
+              <div class="key backspace">
+
+              </div>
+              <!--END NUMBER KEYS -->
+
+              <div class="key tab">
+
+              </div>
+
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div id="E" class="kee letter">
+                E
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div id="I" class="kee letter">
+                I
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key dual">
+                <Br>
+              </div>
+              <div class="key dual">
+                <br>
+              </div>
+              <div class="key letter dual slash">
+                <br>
+              </div>
+              <div class="key caps">
+                <br>
+              </div>
+              <div id="A" class="kee letter">
+                A
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div id="G" class="kee letter">
+                G
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div id="L" class="key letter">
+
+              </div>
+              <div class="key dual">
+                <br>
+              </div>
+              <div class="key dual">
+                <br>
+              </div>
+              <div id="ENTER" class="key enter">
+                ENTER
+              </div>
+
+              <div class="key shift left">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div class="key letter">
+
+              </div>
+              <div id="N" class="kee letter">
+                N
+              </div>
+              <div id="M" class="kee letter">
+                M
+              </div>
+              <div class="key dual">
+                <br>
+              </div>
+              <div class="key dual">
+                <br>
+              </div>
+              <div class="key dual">
+                <br>
+              </div>
+              <div class="key shift right">
+
+              </div>
+              <div class="key ctrl">
+
+              </div>
+              <div class="key lowerkeys">
+
+              </div>
+              <div class="key lowerkeys">
+
+              </div>
+              <div class="key space">
+
+              </div>
+              <div class="key lowerkeys">
+
+              </div>
+              <!-- <div class="key">
+   
+              </div>-->
+              <div class="key lowerkeys">
+
+              </div>
+              <div class="key ctrl">
+
+              </div>
+              <!-- </div> -->
+              <!-- end section-a-->
+
+            </div>
+          </div>
+          {{{body}}}
+        </div>
+      </div>
+    </section>
+    <section>
+    </section>
+  </div>
+  <!-- /container -->
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/classie.js"></script>
+  <script src="/javascripts/helper.js"></script>
+  <script src="/javascripts/grid3d.js"></script>
+  <script>
+    $.fn.responsiveTabs = function () {
+
+      return this.each(function () {
+        var el = $(this),
+          tabs = el.find('dt'),
+          content = el.find('dd'),
+          placeholder = $('<div class="responsive-tabs-placeholder"></div>').insertAfter(el);
+
+        tabs.on('click', function () {
+          var tab = $(this);
+
+          tabs.not(tab).removeClass('active');
+          tab.addClass('active');
+
+          placeholder.html(tab.next().html());
+        });
+
+        tabs.filter(':first').trigger('click');
+      });
+
+    }
+    $('.responsive-tabs').responsiveTabs();
+  </script>
+  <script>
+    new grid3D(document.getElementById('grid3d'));
+  </script>
+  <script>
+    var text = ["", "Q", "QZ", "QZY", "QZYC", "QZYCN", "QZYCNO", "QZYCNO "];
+    var text2 = ["", "E", "N", "I", "G", "M", "A", "ENTER"];
+    var counter = 0;
+    var elem = document.getElementById("output");
+    elem.innerHTML = "WELCOME"
+    var inst = setInterval(change, 1000);
+
+    function change() {
+      if (counter >= text.length) {
+        document.getElementById("E").style.boxShadow = "0px 0px 0px black";
+        document.getElementById("N").style.boxShadow = "0px 0px 0px black";
+        document.getElementById("I").style.boxShadow = "0px 0px 0px black";
+        document.getElementById("G").style.boxShadow = "0px 0px 0px black";
+        document.getElementById("M").style.boxShadow = "0px 0px 0px black";
+        document.getElementById("A").style.boxShadow = "0px 0px 0px black";
+        document.getElementById("ENTER").style.boxShadow = "0px 0px 0px black";
+        counter = 0;
+      }
+      elem.innerHTML = text[counter];
+      if (text2[counter] != "") {
+        document.getElementById(text2[counter]).style.boxShadow = "0px 0px 10px red";
+      }
+      counter++;
+    }
+  </script>
+</body>
+
+</html>

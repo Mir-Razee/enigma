@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header_main {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 70px;
+    color: white;
+  }
+
+  .header_sub {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 40px;
+    color: white;
+  }
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background: url('../images/Background_Static.jpg') repeat 0 0;
+  }
+
+  .stats {
+    color: white;
+    font-family: 'Acme', sans-serif;
+  }
+
+  .tableFixHead {
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 69vh;
+    color: white;
+    font-family: 'Acme', sans-serif;
+    border-bottom: 2.5px solid white;
+  }
+
+  .tableFixHead thead tr:first-child th {
+    position: sticky;
+    top: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    height: 60px;
+  }
+
+  th,
+  td {
+    padding: 16px 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+  }
+
+  th {
+    background: white;
+    color: black;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .div1 {
+      width: 80%;
+      height: 100vh;
+      margin-left: 10%;
+      margin-right: 10%;
+      padding: 0;
+    }
+  }
+
+  .title {
+    width: 100%;
+    font-size: 5vw;
+    color: white;
+  }
+
+
+
+  @media only screen and (max-width: 768px) {
+    .title {
+      width: 100%;
+      font-size: 5vw;
+      color: white;
+    }
+
+    .div1 {
+      width: 100%;
+      height: 100%;
+      margin: 0px !important;
+      padding: 0px !important;
+    }
+  }
+</style>
+
+<div class="header_main">
+  <div class="col">ENIGMA</div>
+</div>
+<hr color="white" style="border: 2px solid white;">
+<div class="header_sub">
+  LEADERBOARD
+</div>
+<hr color="white" style="border: 2px solid white;">
+<div class="tableFixHead">
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Username</th>
+        <th>No. of Questions Solved</th>
+      </tr>
+      <tr>
+        <th>{{Rank}}(You)</th>
+        <th>{{User_Id}}</th>
+        <th>{{My_score}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each lb_data}}
+      <tr>
+        <td>{{inc @index}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.score}}</td>
+      </tr>
+     {{/each}}
+    </tbody>
+  </table>
+</div>
+<br>

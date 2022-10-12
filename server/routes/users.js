@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/userModel');
 const createCertificate = require('../services/certificateService');
-const { ensureLoggedIn } = require('../middleware/auth');
 
-router.get('/getcertificate', ensureLoggedIn(), async function (req, res, next) {
+router.get('/getcertificate', async function (req, res, next) {
     try {
         let done = (req.user.certificateName != "");
         let valid = (req.user.score > 0);
@@ -35,7 +34,7 @@ router.get('/getcertificate', ensureLoggedIn(), async function (req, res, next) 
     }
 });
 
-router.post('/getcertificate', ensureLoggedIn(), async function (req, res, next) {
+router.post('/getcertificate', async function (req, res, next) {
     try {
         const uname = req.user.username;
         let valid = (req.user.score > 0);

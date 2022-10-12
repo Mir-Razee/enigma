@@ -15,7 +15,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
-// var playRouter = require('./routes/play');
+var playRouter = require('./routes/play');
 
 var app = express();
 
@@ -47,7 +47,7 @@ connectDB();
 // });
 
 let redisClient = redis.createClient({
-  url: `redis://:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOSTNAME}:${process.env.REDIS_PORT}`,
+  url: `redis://wow:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOSTNAME}:${process.env.REDIS_PORT}`,
   legacyMode: true
 });
 
@@ -89,7 +89,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-// app.use('/play', playRouter);
+app.use('/play', playRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

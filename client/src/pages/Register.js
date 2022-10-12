@@ -2,7 +2,7 @@ import React from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from "axios";
-import styles from './styles/Register';
+import styles from './styles/Register.css';
 import Swal from 'sweetalert2'
 import Container from "react-bootstrap/Container";
 

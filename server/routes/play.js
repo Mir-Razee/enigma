@@ -4,24 +4,25 @@ const User = require('../models/userModel');
 const QnA = require('../models/qnaModel');
 const { ensureLoggedIn } = require('../middleware/auth');
 
+const end = new Date("2022-10-30T23:59:59+05:30");
+const start = new Date('2022-10-01T00:34:59+05:30');
+
 router.get('/', ensureLoggedIn(), async function (req, res, next) {
     try {
         //to be used for countdown and finish page
         const curDateTime = new Date();
-        const end = new Date("2021-04-25T23:59:59+05:30");
-        const start = new Date('2021-04-23T00:34:59+05:30');
         //console.log(curDateTime.getTime() < start.getTime());
         if (curDateTime.getTime() > end.getTime()) {
-            return res.render('end', { layout: 'play_layout' });
+            return res.send('end');
         }
         else if (curDateTime.getTime() < start.getTime()) {
-            return res.render('', { layout: 'countdown' });
+            return res.send('countdown');
         }
         const noOfQuestions = await QnA.countDocuments({});
-        console.log('CURRENT LEVEL', req.user.level);
+        // console.log('CURRENT LEVEL', req.user.level);
         // for completion
         if (Math.min(...req.user.level) > noOfQuestions) {
-            return res.render('complete', { text: "Congrats! You completed Enigma.", layout: 'play_layout' });
+            return res.send('complete');
         }
         let last = false;
         if (req.user.level.length == 2) {
@@ -33,7 +34,7 @@ router.get('/', ensureLoggedIn(), async function (req, res, next) {
                 last = true;
             }
             var done = { q1: false, q2: false };
-            res.render('index', { q1, q2, active: { q1: true }, last, done, layout: 'play_layout' });
+            res.send({ q1, q2, active: { q1: true }, last, done });
         }
         else if (req.user.level.length == 1) {
             const cur_ques = req.user.level[0];
@@ -58,7 +59,7 @@ router.get('/', ensureLoggedIn(), async function (req, res, next) {
             if (q2_index > noOfQuestions) {
                 last = true;
             }
-            res.render('index', { q1, q2, active, done, last, layout: 'play_layout' });
+            res.send({ q1, q2, active, done, last });
         }
     }
     catch (e) {
@@ -69,8 +70,6 @@ router.get('/', ensureLoggedIn(), async function (req, res, next) {
 router.post('/', ensureLoggedIn(), async function (req, res, next) {
     try {
         const curDateTime = new Date();
-        const end = new Date("2021-04-25T23:59:59+05:30");
-        const start = new Date('2021-04-23T00:34:59+05:30');
         //console.log(curDateTime.getTime() < start.getTime());
         if (curDateTime.getTime() > end.getTime()) {
             return res.render('end', { layout: 'play_layout' });
@@ -132,8 +131,6 @@ router.get('/practice', ensureLoggedIn(), async function (req, res, next) {
     try {
         //to be used for countdown and finish page
         const curDateTime = new Date();
-        const end = new Date("2021-04-25T23:59:59+05:30");
-        const start = new Date('2021-04-23T00:34:59+05:30');
         //console.log(curDateTime.getTime() < start.getTime());
         if (curDateTime.getTime() < start.getTime()) {
             return res.render('', { layout: 'countdown' });
@@ -195,8 +192,6 @@ router.get('/practice', ensureLoggedIn(), async function (req, res, next) {
 router.post('/practice', ensureLoggedIn(), async function (req, res, next) {
     try {
         const curDateTime = new Date();
-        const end = new Date("2021-04-25T23:59:59+05:30");
-        const start = new Date('2021-04-23T00:34:59+05:30');
 
         if (curDateTime.getTime() < start.getTime()) {
             return res.render('', { layout: 'countdown' });

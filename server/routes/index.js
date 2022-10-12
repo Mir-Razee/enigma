@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const QnA = require('../models/qnaModel');
 const User = require('../models/userModel');
-
+const { ensureLoggedIn } = require('../middleware/auth');
 
 function get_rank(email, onlyRank) {
   return new Promise(function (resolve, reject) {
@@ -20,7 +21,7 @@ function get_rank(email, onlyRank) {
               break;
             }
           }
-          if (result[itr].score > 0) {
+          if (result[itr].score >= 0) {
             leaderboard_data.push({ 'name': result[itr].username, 'score': result[itr].score });
           }
           else {
@@ -39,7 +40,7 @@ function get_rank(email, onlyRank) {
 
 
 // register new user
-router.post('/register', async function (req, res) {
+router.post('/register', ensureLoggedIn({ usernameCheck: false }), async function (req, res) {
   try {
     const { username } = req.body;
     const userExists = await User.findOne({ username });
@@ -65,7 +66,7 @@ router.get('/getuser', function (req, res) {
   res.send(req.user);
 })
 
-router.get('/profile', async function (req, res, next) {
+router.get('/profile', ensureLoggedIn(), async function (req, res, next) {
   try {
     let name;
     if (req.user.lastName == undefined) {
@@ -89,30 +90,30 @@ router.get('/profile', async function (req, res, next) {
   }
 });
 
-// // route to load questions in database
-// // requires questions.js file,answer[],close_ans[]
-// router.get('/loadquestions', async function (req, res, next) {
-//   const noOfQuestions = 14;
-//   for (i = 0; i < noOfQuestions; i++) {
-//     const newQuestion={
-//       ...questions[i],
-//       answer: answer[i],
-//       close_ans: close_ans[i]
-//     }
-//     await QnA.create(newQuestion);
-//   }
-//   res.send("loaded");
-// });
+const questions = require('./questions');
+// route to load questions in database
+// requires questions.js file,answer[],close_ans[]
+router.get('/loadquestions', async function (req, res, next) {
+  let answer = ["wow", "lmao"];
+  let close_ans = ["wo", "lma"];
+  const noOfQuestions = 2;
+  for (i = 0; i < noOfQuestions; i++) {
+    const newQuestion = {
+      ...questions[i],
+      answer: answer[i],
+      close_ans: close_ans[i]
+    }
+    await QnA.create(newQuestion);
+  }
+  res.send("loaded");
+});
 
 //leaderboard
-router.get('/leaderboard', async function (req, res, next) {
+router.get('/leaderboard', ensureLoggedIn(), async function (req, res, next) {
   try {
     const uname = req.user.username;
     const rank = await get_rank(req.user.email, false);
-    console.log('rank is :', rank);
-    // console.log('THE LEADERBOARD DATA:', leaderboard_data);
-    res.render('leaderboard', {
-      layout: 'layout_empty',
+    res.send({
       Rank: rank,
       User_Id: uname,
       My_score: req.user.score,

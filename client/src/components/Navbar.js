@@ -16,7 +16,7 @@ const NavBar = () => {
     }
 
     const GoogleLogout = () => {
-        axios.get("http://localhost:5000/auth/logout", {
+        axios.get("/auth/logout", {
             withCredentials: true
         }).then((res) => {
             if (res.data === "done") {
@@ -41,8 +41,8 @@ const NavBar = () => {
                     </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/tutors">Forums</Nav.Link>
-                        <Nav.Link href="/courses">Courses</Nav.Link>
+                        <Nav.Link href="/play">Play!</Nav.Link>
+                        <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
                     </Nav>
                     <Nav>
                         {userObject ? (
@@ -60,8 +60,8 @@ const NavBar = () => {
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu variant="dark">
                                         <Dropdown.Item href="/profile">My Profile</Dropdown.Item>
+                                        <Dropdown.Item href="/play">Play</Dropdown.Item>
                                         <Dropdown.Item href="/leaderboard">Leaderboard</Dropdown.Item>
-                                        <Dropdown.Item href="/rules">Rules</Dropdown.Item>
                                         <Dropdown.Divider />
                                         <Dropdown.Item href="#" onClick={GoogleLogout}>
                                             Logout
